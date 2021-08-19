@@ -128,6 +128,8 @@ export const App = () => {
         if (selectedCountry) {
             fetchReport();
             fetchReportNow();
+        } else {
+            setTotal(null);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dateRange, selectedCountry]);

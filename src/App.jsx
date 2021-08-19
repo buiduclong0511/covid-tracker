@@ -14,6 +14,7 @@ export const App = () => {
         from: null,
         to: null
     });
+    const [isFetching, setIsFetching] = useState(false);
     const [total, setTotal] = useState(null);
     const [report, setReport] = useState([]);
     const [options, setOptions] = useState({
@@ -40,7 +41,7 @@ export const App = () => {
 
     const fetchReport = async () => {
         try {
-            setIsShowChart(false);
+            setIsFetching(true);
             const dateFrom = dateRange.from ? new Date(new Date(dateRange.from).setDate(new Date(dateRange.from).getDate() - 1)).toISOString() : new Date().toISOString();
             const dateTo = dateRange.to ? new Date(dateRange.to).toISOString() : new Date().toISOString();
             const res = await axios.get(`
@@ -93,7 +94,7 @@ export const App = () => {
         } catch (err) {
             console.log(err.response);
         } finally {
-            setIsShowChart(true);
+            setIsFetching(false);
         }
     };
 
@@ -209,7 +210,7 @@ export const App = () => {
                     </span>
                 </div>
             ) : (
-                <p className="noReport">Không có thống kê của {selectedCountry.Country}</p>
+                <p className="noReport" style={{ display: isFetching ? "none" : "" }}>Không có thống kê của {selectedCountry.Country}</p>
             ) : (
                 <div className="chart">
                     <HighchartsReact

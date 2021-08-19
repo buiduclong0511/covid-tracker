@@ -186,7 +186,12 @@ export const App = () => {
                     <p>Số ca nhiễm: {total.confirmeds}</p>
                     <p>Số ca tử vong: {total.deaths}</p>
                 </div>
-            ) : <></>}
+            ) : (
+                <div className="total">
+                    <p>Số ca nhiễm:</p>
+                    <p>Số ca tử vong:</p>
+                </div>
+            )}
             {isShowChart ? report.length ? (
                 <div className="chart">
                     <HighchartsReact
@@ -199,7 +204,46 @@ export const App = () => {
                 </div>
             ) : (
                 <p className="noReport">Không có thống kê của {selectedCountry.Country}</p>
-            ) : <></>}
+            ) : (
+                <div className="chart">
+                    <HighchartsReact
+                        highcharts={Highcharts}
+                        options={{
+                            title: {
+                              text: 'Biểu đồ'
+                            },
+                            xAxis: {
+                                categories: []
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Số ca'
+                                }
+                            },
+                            series: [
+                                {
+                                    name: "Số ca nhiễm",
+                                    data: [],
+                                    color: "#f00"
+                                },
+                                {
+                                    name: "Số ca tử vong",
+                                    data: [],
+                                    color: "#000"
+                                },
+                                {
+                                    name: "Số ca phục hổi",
+                                    data: [],
+                                    color: "#0f0"
+                                },
+                            ]
+                          }}
+                    />
+                    <span className="api">
+                        Api document: <a href="https://documenter.getpostman.com/view/10808728/SzS8rjbc" target="_blank">https://documenter.getpostman.com/view/10808728/SzS8rjbc</a>
+                    </span>
+                </div>
+            )}
         </Container>
     );
 };

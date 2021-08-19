@@ -70,15 +70,18 @@ export const App = () => {
                 series: [
                     {
                         name: "Số ca nhiễm",
-                        data: confirmeds
+                        data: confirmeds,
+                        color: "#f00"
                     },
                     {
                         name: "Số ca tử vong",
-                        data: deaths
+                        data: deaths,
+                        color: "#000"
                     },
                     {
                         name: "Số ca phục hổi",
-                        data: recovereds
+                        data: recovereds,
+                        color: "#0f0"
                     },
                 ]
             });

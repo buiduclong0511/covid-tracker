@@ -101,16 +101,18 @@ export const App = () => {
 
     const fetchReportNow = async () => {
         try {
-            const dateFrom = new Date(new Date().setDate(new Date().getDate() - 2)).toISOString();
-            const dateTo = new Date(new Date().setDate(new Date().getDate() - 1)).toISOString();
+            // const dateFrom = new Date(new Date().setDate(new Date().getDate() - 2)).toISOString();
+            // const dateTo = new Date(new Date().setDate(new Date().getDate() - 1)).toISOString();
             const res = await axios.get(`
-                https://api.covid19api.com/country/${selectedCountry.Slug}?from=${dateFrom}&to=${dateTo}
+                https://api.covid19api.com/total/country/${selectedCountry.Slug}
             `);
-            setTotal({
-                deaths: res.data[0].Deaths,
-                confirmeds: res.data[0].Confirmed,
-                recovereds: res.data[0].Recovered
-            });
+            if (res.data.length) {
+                setTotal({
+                    deaths: res.data[res.data.length - 1].Deaths,
+                    confirmeds: res.data[res.data.length - 1].Confirmed,
+                    recovereds: res.data[res.data.length - 1].Recovered
+                });
+            }
         } catch (err) {
             console.log(err);
         }

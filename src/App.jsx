@@ -153,7 +153,7 @@ export const App = () => {
                     <SelectField 
                         options={countries}
                         selectedValue={selectedCountry}
-                        label="Country"
+                        label="Chọn quốc gia"
                         onChange={handleChange}
                     />
                 </div>

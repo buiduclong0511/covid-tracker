@@ -241,4 +241,11 @@ const Container = styled.div`
     .noReport {
         padding-left: 10px;
     }
+
+    .api {
+        display: inline-block;
+        max-width: 100%;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
 `;

@@ -40,6 +40,7 @@ export const App = () => {
 
     const fetchReport = async () => {
         try {
+            setIsShowChart(false);
             const dateFrom = dateRange.from ? new Date(new Date(dateRange.from).setDate(new Date(dateRange.from).getDate() - 1)).toISOString() : new Date().toISOString();
             const dateTo = dateRange.to ? new Date(dateRange.to).toISOString() : new Date().toISOString();
             const res = await axios.get(`
@@ -91,6 +92,8 @@ export const App = () => {
             setIsShowChart(true);
         } catch (err) {
             console.log(err.response);
+        } finally {
+            setIsShowChart(true);
         }
     };
 
@@ -195,7 +198,7 @@ export const App = () => {
                     <p>Số ca tử vong:</p>
                 </div>
             )}
-            {isShowChart ? report.length ? (
+            {isShowChart && selectedCountry ? report.length ? (
                 <div className="chart">
                     <HighchartsReact
                         highcharts={Highcharts}

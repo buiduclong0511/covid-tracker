@@ -194,8 +194,8 @@ export const App = () => {
             </div>
             {total ? (
                 <div className="total">
-                    <p>Tổng số ca nhiễm: {total.confirmeds}</p>
-                    <p>Tổng số ca tử vong: {total.deaths}</p>
+                    <p>Tổng số ca nhiễm: {total.confirmeds.toLocaleString()}</p>
+                    <p>Tổng số ca tử vong: {total.deaths.toLocaleString()}</p>
                 </div>
             ) : (
                 <div className="total">

@@ -190,13 +190,13 @@ export const App = () => {
             </div>
             {total ? (
                 <div className="total">
-                    <p>Số ca nhiễm: {total.confirmeds}</p>
-                    <p>Số ca tử vong: {total.deaths}</p>
+                    <p>Tổng số ca nhiễm: {total.confirmeds}</p>
+                    <p>Tổng số ca tử vong: {total.deaths}</p>
                 </div>
             ) : (
                 <div className="total">
-                    <p>Số ca nhiễm:</p>
-                    <p>Số ca tử vong:</p>
+                    <p>Tổng số ca nhiễm:</p>
+                    <p>Tổng số ca tử vong:</p>
                 </div>
             )}
             {isShowChart && selectedCountry ? report.length ? (

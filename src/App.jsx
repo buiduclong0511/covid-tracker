@@ -60,6 +60,9 @@ export const App = () => {
                   text: chartTitle
                 },
                 xAxis: {
+                    title: {
+                        text: 'Ngày'
+                    },
                     categories: _dateRange
                 },
                 yAxis: {
@@ -213,6 +216,9 @@ export const App = () => {
                               text: 'Biểu đồ'
                             },
                             xAxis: {
+                                title: {
+                                    text: 'Ngày'
+                                },
                                 categories: []
                             },
                             yAxis: {
